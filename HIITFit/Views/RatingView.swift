@@ -62,8 +62,6 @@ struct RatingView: View {
         }
         .font(.largeTitle)
     }
-    .font(.largeTitle)
-  }
 }
 
 struct RatingView_Previews: PreviewProvider {
