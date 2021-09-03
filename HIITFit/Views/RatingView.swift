@@ -34,7 +34,7 @@ import SwiftUI
 
 struct RatingView: View {
     let exerciseIndex: Int
-    @AppStorage("ratings") private var ratings = "0000"
+    @AppStorage("ratings") private var ratings = "4000"
     @State private var rating = 0
     let maximumRating = 5
     let onColor = Color.red
