@@ -90,7 +90,7 @@ struct ExerciseView: View {
           TimerView(timerDone: $timerDone)
         }
         Spacer()
-        RatingView(rating: $rating)
+        RatingView(exerciseIndex: index)
           .padding()
         Button("History") {
           showHistory.toggle()
