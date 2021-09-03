@@ -35,13 +35,14 @@ import AVKit
 
 struct ExerciseView: View {
   @EnvironmentObject var history: HistoryStore
-  @AppStorage("rating") private var rating = 0
   @State private var showHistory = false
   @State private var showSuccess = false
   @Binding var selectedTab: Int
-  let index: Int
   @State private var timerDone = false
   @State private var showTimer = false
+    
+    let index: Int
+
 
   var lastExercise: Bool {
     index + 1 == Exercise.exercises.count
