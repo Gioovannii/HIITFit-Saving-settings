@@ -65,8 +65,11 @@ struct RatingView: View {
 }
 
 struct RatingView_Previews: PreviewProvider {
-  static var previews: some View {
-    RatingView(rating: .constant(3))
-      .previewLayout(.sizeThatFits)
-  }
+    @AppStorage("ratings") static var ratings: String?
+    static var previews: some View {
+        ratings = nil
+        return
+        RatingView(exerciseIndex: 0)
+            .previewLayout(.sizeThatFits)
+    }
 }
