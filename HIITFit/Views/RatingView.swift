@@ -58,7 +58,7 @@ struct RatingView: View {
                     .foregroundColor(
                         index > rating ? offColor : onColor)
                     .onTapGesture {
-                        rating = index
+                        updatingRating(index: index)
                     }
                     // 1 run every time app appear
                     .onAppear {
