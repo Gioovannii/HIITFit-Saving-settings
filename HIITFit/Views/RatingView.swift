@@ -65,7 +65,7 @@ struct RatingView: View {
                         convertRating()
                     }
                     .onChange(of: ratings) { _ in
-                        convertRating()
+                        convertRating() // Call method whenever ratings change
                     }
             }
         }
