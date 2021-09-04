@@ -66,6 +66,7 @@ struct RatingView: View {
                         let index = ratings.index(
                             ratings.startIndex,
                             offsetBy: exerciseIndex)
+                        // 3 Extract character from string using string.index
                         let character = ratings[index]
                         // 4 convert character to integer if failed set to 0
                         rating = character.wholeNumberValue ?? 0
