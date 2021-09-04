@@ -45,6 +45,7 @@ class HistoryStore: ObservableObject {
     #if DEBUG
 //    createDevData()
     #endif
+    
   }
 
   func addDoneExercise(_ exerciseName: String) {
@@ -57,6 +58,5 @@ class HistoryStore: ObservableObject {
         ExerciseDay(date: today, exercises: [exerciseName]),
         at: 0)
     }
-    print("History: ", exerciseDays)
   }
 }
