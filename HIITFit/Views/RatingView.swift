@@ -74,6 +74,13 @@ struct RatingView: View {
         }
         .font(.largeTitle)
     }
+    
+    func updatingRating(index: Int) {
+        rating = index
+        let index = ratings.index(ratings.startIndex, offsetBy: exerciseIndex)
+        
+        ratings.replaceSubrange(index...index, with: String(rating))
+    }
 }
 
 struct RatingView_Previews: PreviewProvider {
