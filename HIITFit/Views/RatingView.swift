@@ -50,7 +50,7 @@ struct RatingView: View {
             ratings = ratings.padding(toLength: desiredLength, withPad: "0", startingAt: 0)
         }
     }
-    
+
     var body: some View {
         HStack {
             ForEach(1 ..< maximumRating + 1) { index in
@@ -62,14 +62,7 @@ struct RatingView: View {
                     }
                     // 1 run every time app appear
                     .onAppear {
-                        // 2 ratings is label as @App storage so his value is store in user default
-                        let index = ratings.index(
-                            ratings.startIndex,
-                            offsetBy: exerciseIndex)
-                        // 3 Extract character from string using string.index
-                        let character = ratings[index]
-                        // 4 convert character to integer if failed set to 0
-                        rating = character.wholeNumberValue ?? 0
+                        convertRating()
                     }
             }
         }
@@ -81,6 +74,17 @@ struct RatingView: View {
         let index = ratings.index(ratings.startIndex, offsetBy: exerciseIndex)
         
         ratings.replaceSubrange(index...index, with: String(rating))
+    }
+    
+    fileprivate func convertRating() {
+        // 2 ratings is label as @App storage so his value is store in user default
+        let index = ratings.index(
+            ratings.startIndex,
+            offsetBy: exerciseIndex)
+        // 3 Extract character from string using string.index
+        let character = ratings[index]
+        // 4 convert character to integer if failed set to 0
+        rating = character.wholeNumberValue ?? 0
     }
 }
 
