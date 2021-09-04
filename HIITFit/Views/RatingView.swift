@@ -64,6 +64,9 @@ struct RatingView: View {
                     .onAppear {
                         convertRating()
                     }
+                    .onChange(of: ratings) { _ in
+                        convertRating()
+                    }
             }
         }
         .font(.largeTitle)
