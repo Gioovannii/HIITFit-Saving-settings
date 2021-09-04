@@ -62,7 +62,7 @@ struct RatingView: View {
                     }
                     // 1 run every time app appear
                     .onAppear {
-                        // 2 
+                        // 2 ratings is label as @App storage so his value is store in user default
                         let index = ratings.index(
                             ratings.startIndex,
                             offsetBy: exerciseIndex)
