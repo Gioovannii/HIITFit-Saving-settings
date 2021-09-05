@@ -60,7 +60,15 @@ struct HIITFitApp: App {
                             in: .userDomainMask))
                     
                 }
-                .environmentObject(HistoryStore())
+                .environmentObject(historyStore)
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("History"),
+                          message: Text("""
+                        Unfortunately we can't load your past history.
+                        Email support:
+                          support@xyz.com
+                        """))
+                }
         }
     }
 }
