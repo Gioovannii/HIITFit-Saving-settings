@@ -92,6 +92,16 @@ class HistoryStore: ObservableObject {
         else {
             throw FileError.urlFailure
         }
+        
+        var plistData = [[Any]]()
+        for exerciseDay in exerciseDays {
+            plistData.append(([exerciseDay.id.uuidString,
+                              exerciseDay.date,
+                              exerciseDay.exercises]))
+
+        }
     }
+    
+    
     
 }
