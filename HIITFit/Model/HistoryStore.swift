@@ -93,12 +93,12 @@ class HistoryStore: ObservableObject {
             throw FileError.urlFailure
         }
         
-        var plistData = [[Any]]()
-        for exerciseDay in exerciseDays {
-            plistData.append(([exerciseDay.id.uuidString,
-                              exerciseDay.date,
-                              exerciseDay.exercises]))
-
+        let plistData = exerciseDays.map {
+            exerciseDays in
+            [ exerciseDays.id.uuidString,
+              exerciseDays.date,
+              exerciseDays.exercises
+            ]
         }
     }
     
