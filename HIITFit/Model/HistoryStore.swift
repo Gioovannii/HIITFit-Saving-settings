@@ -77,6 +77,15 @@ class HistoryStore: ObservableObject {
     func load() throws {}
     
     func getURL() -> URL? {
-        
+        guard let documentsURL = FileManager.default.urls(
+                for: .documentDirectory, in: .userDomainMask).first else {
+            // 1 leave method if condition test fails
+            return nil
+        }
+        // 2 Add file name of document path
+        return
+            documentsURL.appendingPathComponent("history.plist")
     }
+    
+    
 }
