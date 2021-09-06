@@ -55,6 +55,11 @@ class HistoryStore: ObservableObject {
 //    createDevData()
     #endif
     
+    do {
+        try load()
+    } catch {
+        throw error
+    }
   }
 
   func addDoneExercise(_ exerciseName: String) {
