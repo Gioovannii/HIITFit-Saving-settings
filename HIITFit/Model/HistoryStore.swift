@@ -48,7 +48,9 @@ struct ExerciseDay: Identifiable {
 class HistoryStore: ObservableObject {
   @Published var exerciseDays: [ExerciseDay] = []
 
-  init() {
+    init() {}
+    
+    init(withChecking: Bool) throws {
     #if DEBUG
 //    createDevData()
     #endif
@@ -66,4 +68,8 @@ class HistoryStore: ObservableObject {
         at: 0)
     }
   }
+    
+    func load() throws {
+        throw FileError.loadFailure
+    }
 }
