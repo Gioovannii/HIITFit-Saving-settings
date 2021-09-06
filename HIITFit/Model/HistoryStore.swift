@@ -46,8 +46,8 @@ struct ExerciseDay: Identifiable {
 }
 
 class HistoryStore: ObservableObject {
-  @Published var exerciseDays: [ExerciseDay] = []
-
+    @Published var exerciseDays: [ExerciseDay] = []
+    
     init() {}
     
     init(withChecking: Bool) throws {
