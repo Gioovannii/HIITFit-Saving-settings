@@ -94,10 +94,9 @@ class HistoryStore: ObservableObject {
         }
         
         let plistData = exerciseDays.map {
-            exerciseDays in
-            [ exerciseDays.id.uuidString,
-              exerciseDays.date,
-              exerciseDays.exercises
+            [ $0.id.uuidString,
+              $0.date,
+              $0.exercises
             ]
         }
     }
