@@ -32,6 +32,13 @@
 
 import Foundation
 
+enum FileError: Error {
+    case loadFailure
+    case saveFailure
+    case urlFailure
+}
+
+
 struct ExerciseDay: Identifiable {
   let id = UUID()
   let date: Date
