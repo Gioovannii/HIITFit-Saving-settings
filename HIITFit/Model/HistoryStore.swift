@@ -76,5 +76,7 @@ class HistoryStore: ObservableObject {
     
     func load() throws {}
     
-   
+    func getURL() -> URL? {
+        
+    }
 }
