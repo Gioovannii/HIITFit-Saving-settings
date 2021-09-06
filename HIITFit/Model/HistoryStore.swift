@@ -40,9 +40,9 @@ enum FileError: Error {
 
 
 struct ExerciseDay: Identifiable {
-  let id = UUID()
-  let date: Date
-  var exercises: [String] = []
+    let id = UUID()
+    let date: Date
+    var exercises: [String] = []
 }
 
 class HistoryStore: ObservableObject {
