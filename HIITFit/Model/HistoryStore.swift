@@ -87,5 +87,11 @@ class HistoryStore: ObservableObject {
             documentsURL.appendingPathComponent("history.plist")
     }
     
+    func save() throws {
+        guard let dataURL = getURL()
+        else {
+            throw FileError.urlFailure
+        }
+    }
     
 }
