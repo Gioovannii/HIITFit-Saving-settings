@@ -102,19 +102,6 @@ class HistoryStore: ObservableObject {
         }
     }
 
-  func addDoneExercise(_ exerciseName: String) {
-    let today = Date()
-    if let firstDate = exerciseDays.first?.date, today.isSameDay(as: firstDate) {
-      print("Adding \(exerciseName)")
-      exerciseDays[0].exercises.append(exerciseName)
-    } else {
-      exerciseDays.insert(
-        ExerciseDay(date: today, exercises: [exerciseName]),
-        at: 0)
-    }
-  }
-    
-    func load() throws {}
     
     func getURL() -> URL? {
         guard let documentsURL = FileManager.default.urls(
