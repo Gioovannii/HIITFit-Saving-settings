@@ -41,7 +41,7 @@ struct HIITFitApp: App {
         let historyStore: HistoryStore
         do {
             historyStore = try
-            HistoryStore(withChecking: true)
+                HistoryStore(withChecking: true)
         } catch {
             print("Could not load history data")
             historyStore = HistoryStore()
@@ -49,7 +49,7 @@ struct HIITFitApp: App {
         }
         _historyStore = StateObject(wrappedValue: historyStore)
     }
-   
+    
     
     var body: some Scene {
         WindowGroup {

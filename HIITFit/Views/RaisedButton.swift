@@ -36,7 +36,24 @@ struct RaisedButton: View {
     var body: some View {
         Button(action: {}, label: {
             Text("Get started")
+                .raisedButtonTextStyle()
         })
+    }
+}
+
+struct RaisedButtonStyle: ButtonStyle {
+        
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .background(Color.red)
+    }
+}
+
+extension Text {
+    func raisedButtonTextStyle() -> some View {
+        self
+            .font(.body)
+            .fontWeight(.bold)
     }
 }
 
