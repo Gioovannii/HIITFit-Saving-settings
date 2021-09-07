@@ -78,7 +78,29 @@ class HistoryStore: ObservableObject {
             fatalError(error.localizedDescription)
         }
     }
-  }
+    
+    func load() throws {
+        // 1 Set up URL like we do with save
+        guard let dataURL = getURL()
+        else {
+            throw FileError.urlFailure
+        }
+        
+        do {
+            // 2 read data file into a byte buffer
+            let data = try Data(contentsOf: dataURL)
+            // 3 Convert property list into format that app can read
+            let plistData = try PropertyListSerialization.propertyList(from: data, options: [], format: nil)
+            // 4 Type cast t make sure type still Any
+            let convertedPlistData = plistData as? [[Any]] ?? []
+            // 5  use map to each element to type Any
+            exerciseDays = convertedPlistData.map {
+                ExerciseDay(date: $0[1] as? Date ?? Date(), exercises: $0[2] as? [String] ?? [])
+            }
+        } catch  {
+            throw FileError.loadFailure
+        }
+    }
 
   func addDoneExercise(_ exerciseName: String) {
     let today = Date()
