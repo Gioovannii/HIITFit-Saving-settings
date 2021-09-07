@@ -51,9 +51,16 @@ class HistoryStore: ObservableObject {
     init() {}
     
     init(withChecking: Bool) throws {
-    #if DEBUG
-//    createDevData()
-    #endif
+        #if DEBUG
+        //    createDevData()
+        #endif
+        
+        do {
+            try load()
+        } catch {
+            throw error
+        }
+    }
     
     do {
         try load()
@@ -100,7 +107,5 @@ class HistoryStore: ObservableObject {
             ]
         }
     }
-    
-    
     
 }
