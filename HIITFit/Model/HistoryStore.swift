@@ -79,19 +79,16 @@ class HistoryStore: ObservableObject {
             throw FileError.urlFailure
         }
         
-        do {
-            // 2 read data file into a byte buffer
-            guard let data = try? Data(contentsOf: dataURL) else { return }
-            // 3 Convert property list into format that app can read
-            let plistData = try PropertyListSerialization.propertyList(from: data, options: [], format: nil)
-            // 4 Type cast t make sure type still Any
-            let convertedPlistData = plistData as? [[Any]] ?? []
-            // 5  use map to each element to type Any
-            exerciseDays = convertedPlistData.map {
-                ExerciseDay(date: $0[1] as? Date ?? Date(), exercises: $0[2] as? [String] ?? [])
-            }
-        } catch  {
-            throw FileError.loadFailure
+        
+        // 2 read data file into a byte buffer
+        guard let data = try? Data(contentsOf: dataURL) else { return }
+        // 3 Convert property list into format that app can read
+        let plistData = try PropertyListSerialization.propertyList(from: data, options: [], format: nil)
+        // 4 Type cast t make sure type still Any
+        let convertedPlistData = plistData as? [[Any]] ?? []
+        // 5  use map to each element to type Any
+        exerciseDays = convertedPlistData.map {
+            ExerciseDay(date: $0[1] as? Date ?? Date(), exercises: $0[2] as? [String] ?? [])
         }
     }
     
