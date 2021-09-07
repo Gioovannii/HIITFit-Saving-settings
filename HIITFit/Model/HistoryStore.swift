@@ -126,6 +126,20 @@ class HistoryStore: ObservableObject {
               $0.exercises
             ]
         }
+        
+        do {
+            // 1 Convert historyData in property list format
+            let data = try PropertyListSerialization.data(
+                fromPropertyList: plistData,
+                format: .binary,
+                options: .zero)
+            
+            // 2 write to disk using URL
+            try data.write(to: dataURL, options: .atomic)
+        } catch {
+            // 3 writing and conversion may throw an error
+            throw FileError.saveFailure
+        }
     }
     
 }
