@@ -62,33 +62,26 @@ class HistoryStore: ObservableObject {
         }
     }
     
-    func addDoneExercise(_ exerciseName: String) {
-        let today = Date()
-        if let firstDate = exerciseDays.first?.date, today.isSameDay(as: firstDate) {
-            print("Adding \(exerciseName)")
-            exerciseDays[0].exercises.append(exerciseName)
-        } else {
-            exerciseDays.insert(
-                ExerciseDay(date: today, exercises: [exerciseName]),
-                at: 0)
+    func getURL() -> URL? {
+        guard let documentsURL = FileManager.default.urls(
+                for: .documentDirectory, in: .userDomainMask).first else {
+            // 1 leave method if condition test fails
+            return nil
         }
-        do {
-            try save()
-        } catch {
-            fatalError(error.localizedDescription)
-        }
+        // 2 Add file name of document path
+        return
+            documentsURL.appendingPathComponent("history.plist")
     }
     
     func load() throws {
         // 1 Set up URL like we do with save
-        guard let dataURL = getURL()
-        else {
+        guard let dataURL = getURL() else {
             throw FileError.urlFailure
         }
         
         do {
             // 2 read data file into a byte buffer
-            let data = try Data(contentsOf: dataURL)
+            guard let data = try? Data(contentsOf: dataURL) else { return }
             // 3 Convert property list into format that app can read
             let plistData = try PropertyListSerialization.propertyList(from: data, options: [], format: nil)
             // 4 Type cast t make sure type still Any
@@ -100,18 +93,6 @@ class HistoryStore: ObservableObject {
         } catch  {
             throw FileError.loadFailure
         }
-    }
-
-    
-    func getURL() -> URL? {
-        guard let documentsURL = FileManager.default.urls(
-                for: .documentDirectory, in: .userDomainMask).first else {
-            // 1 leave method if condition test fails
-            return nil
-        }
-        // 2 Add file name of document path
-        return
-            documentsURL.appendingPathComponent("history.plist")
     }
     
     func save() throws {
@@ -142,4 +123,20 @@ class HistoryStore: ObservableObject {
         }
     }
     
+    func addDoneExercise(_ exerciseName: String) {
+        let today = Date()
+        if let firstDate = exerciseDays.first?.date, today.isSameDay(as: firstDate) {
+            print("Adding \(exerciseName)")
+            exerciseDays[0].exercises.append(exerciseName)
+        } else {
+            exerciseDays.insert(
+                ExerciseDay(date: today, exercises: [exerciseName]),
+                at: 0)
+        }
+        do {
+            try save()
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
 }
