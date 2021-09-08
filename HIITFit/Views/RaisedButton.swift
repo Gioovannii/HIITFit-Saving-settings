@@ -33,6 +33,9 @@
 import SwiftUI
 
 struct RaisedButton: View {
+    let buttonText: String
+    let action: () -> Void
+    
     var body: some View {
         Button(action: {}, label: {
             Text("Get started")
