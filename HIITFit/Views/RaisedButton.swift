@@ -70,18 +70,16 @@ struct SwiftUIView_Previews: PreviewProvider {
             ZStack {
                 RaisedButton()
                     .padding(20)
+                    .buttonStyle(RaisedButtonStyle())
             }
-            
-            .background(Color("background"))
-            .previewLayout(.sizeThatFits)
             ZStack {
                 RaisedButton()
                     .padding(20)
+                    .buttonStyle(RaisedButtonStyle())
             }
             .preferredColorScheme(.dark)
-            
-            .background(Color("background"))
-            .previewLayout(.sizeThatFits)
         }
+        .background(Color("background"))
+        .previewLayout(.sizeThatFits)
     }
 }
