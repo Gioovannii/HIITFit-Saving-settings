@@ -35,15 +35,21 @@ import SwiftUI
 struct EmbossedButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .frame(maxWidth: .infinity)
-            .padding([.top, .bottom], 12)
+        let shadow = Color("drop-shadow")
+        let highlight = Color("drop-highlight")
+        
+        
+        return configuration.label
+            .padding(10)
             .background(
                 Capsule()
+                    .stroke(Color("background"), lineWidth: 2)
+                
                     .foregroundColor(Color("background"))
-                    .shadow(color: Color("drop-shadow"), radius: 4, x: 6, y: 6))
-            .shadow(color: Color("drop-highlight"), radius: 4, x: -6, y: -6)
-        
+                    .shadow(color: shadow, radius: 1, x: 2, y: 2)
+                    .shadow(color: highlight, radius: 1, x: -2, y: -2)
+                    .offset(x: -1, y: -1)
+            )
     }
 }
 
