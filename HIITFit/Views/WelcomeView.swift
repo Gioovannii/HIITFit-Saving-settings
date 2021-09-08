@@ -69,12 +69,7 @@ struct WelcomeView: View {
             .clipShape(Circle())
         }
         // swiftlint:disable:next multiple_closures_with_trailing_closure
-        Button(action: { selectedTab = 0 }) {
-          Text("Get Started")
-            .raisedButtonTextStyle()
-        }
-        .buttonStyle(RaisedButtonStyle())
-        .padding()
+        getStartedButton
        
       }
     }
