@@ -35,6 +35,13 @@ import SwiftUI
 struct WelcomeView: View {
   @State private var showHistory = false
   @Binding var selectedTab: Int
+    
+    var getStartedButton: some View {
+        RaisedButton(buttonText: "Get Started") {
+            selectedTab = 0
+        }
+        .padding()
+    }
 
   var body: some View {
     ZStack {
