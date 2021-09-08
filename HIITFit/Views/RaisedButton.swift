@@ -75,12 +75,16 @@ struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             ZStack {
-                RaisedButton()
+                RaisedButton(buttonText: "Get Started") {
+                    print("Hello world")
+                }
                     .padding(20)
                     .buttonStyle(RaisedButtonStyle())
             }
             ZStack {
-                RaisedButton()
+                RaisedButton(buttonText: "Get Started") {
+                    print("Hello world")
+                }
                     .padding(20)
                     .buttonStyle(RaisedButtonStyle())
             }
