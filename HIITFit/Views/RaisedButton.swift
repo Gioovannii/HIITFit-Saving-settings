@@ -37,10 +37,14 @@ struct RaisedButton: View {
     let action: () -> Void
     
     var body: some View {
-        Button(action: {}, label: {
-            Text("Get started")
+        Button(action: {
+            action()
+        }, label: {
+            Text(buttonText)
                 .raisedButtonTextStyle()
         })
+        
+        .buttonStyle(RaisedButtonStyle())
     }
 }
 
