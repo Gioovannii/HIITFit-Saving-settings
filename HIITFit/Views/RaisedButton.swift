@@ -47,7 +47,12 @@ struct RaisedButtonStyle: ButtonStyle {
         configuration.label
             .frame(maxWidth: .infinity)
             .padding([.top, .bottom], 12)
-            .background(Capsule())
+            .background(
+                Capsule()
+                    .foregroundColor(Color("background"))
+                    .shadow(color: Color("drop-shadow"), radius: 4, x: 6, y: 6))
+                    .shadow(color: Color("drop-highlight"), radius: 4, x: -6, y: -6)
+                            
     }
 }
 
@@ -61,12 +66,22 @@ extension Text {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        ZStack {
-            RaisedButton()
-                .padding(20)
+        Group {
+            ZStack {
+                RaisedButton()
+                    .padding(20)
+            }
+            
+            .background(Color("background"))
+            .previewLayout(.sizeThatFits)
+            ZStack {
+                RaisedButton()
+                    .padding(20)
+            }
+            .preferredColorScheme(.dark)
+            
+            .background(Color("background"))
+            .previewLayout(.sizeThatFits)
         }
-        
-        .background(Color("background"))
-        .previewLayout(.sizeThatFits)
     }
 }
