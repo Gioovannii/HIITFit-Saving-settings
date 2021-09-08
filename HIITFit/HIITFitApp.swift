@@ -69,6 +69,7 @@ struct HIITFitApp: App {
                           support@xyz.com
                         """))
                 }
+                .buttonStyle(RaisedButtonStyle())
         }
     }
 }
