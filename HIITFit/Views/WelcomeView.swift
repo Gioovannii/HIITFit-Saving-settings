@@ -64,13 +64,11 @@ struct WelcomeView: View {
         // swiftlint:disable:next multiple_closures_with_trailing_closure
         Button(action: { selectedTab = 0 }) {
           Text("Get Started")
-          Image(systemName: "arrow.right.circle")
+            .raisedButtonTextStyle()
         }
-        .font(.title2)
+        .buttonStyle(RaisedButtonStyle())
         .padding()
-        .background(
-          RoundedRectangle(cornerRadius: 20)
-          .stroke(Color.gray, lineWidth: 2))
+       
       }
     }
   }
