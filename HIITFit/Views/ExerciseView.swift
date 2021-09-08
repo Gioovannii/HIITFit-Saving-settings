@@ -42,6 +42,11 @@ struct ExerciseView: View {
   @State private var showTimer = false
     
     let index: Int
+    var startExerciseButton: some View {
+        RaisedButton(buttonText: "Start Exercise") {
+            showTimer.toggle()
+        }
+    }
 
 
   var lastExercise: Bool {
@@ -66,9 +71,7 @@ struct ExerciseView: View {
             .foregroundColor(.red)
         }
         HStack(spacing: 150) {
-          Button("Start Exercise") {
-            showTimer.toggle()
-          }
+          startExerciseButton
           Button("Done") {
             history.addDoneExercise(Exercise.exercises[index].exerciseName)
             timerDone = false
