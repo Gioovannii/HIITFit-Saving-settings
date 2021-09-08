@@ -127,13 +127,13 @@
 				CD30C925251474DC0049DB93 /* ContentView.swift */,
 				CD30C95025147E420049DB93 /* WelcomeView.swift */,
 				CD30C95325147E4B0049DB93 /* ExerciseView.swift */,
-				7B97082B26E8A09E0081FF51 /* EmbossedButton.swift */,
 				CD30C958251486730049DB93 /* HeaderView.swift */,
 				CDE2A31E25148B4C00B12C73 /* RatingView.swift */,
 				CD74C96A2574ACDE004C8694 /* TimerView.swift */,
 				CDE2A32125148C5D00B12C73 /* HistoryView.swift */,
 				CD0BEE1525245BC600937B4F /* SuccessView.swift */,
 				7BEFFAD926E71D0E00007972 /* RaisedButton.swift */,
+				7B97082B26E8A09E0081FF51 /* EmbossedButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

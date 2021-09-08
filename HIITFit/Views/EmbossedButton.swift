@@ -32,14 +32,43 @@
 
 import SwiftUI
 
-struct EmbossedButton: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct EmbossedButtonStyle: ButtonStyle {
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(maxWidth: .infinity)
+            .padding([.top, .bottom], 12)
+            .background(
+                Capsule()
+                    .foregroundColor(Color("background"))
+                    .shadow(color: Color("drop-shadow"), radius: 4, x: 6, y: 6))
+            .shadow(color: Color("drop-highlight"), radius: 4, x: -6, y: -6)
+        
     }
 }
 
 struct EmbossedButton_Previews: PreviewProvider {
     static var previews: some View {
-        EmbossedButton()
+        Group {
+            Button(action: {},
+                   label: {
+                    Text("History")
+                        .fontWeight(.bold)
+                   })
+                .buttonStyle(EmbossedButtonStyle())
+                
+                .padding(40)
+                .previewLayout(.sizeThatFits)
+            Button(action: {},
+                   label: {
+                    Text("History")
+                        .fontWeight(.bold)
+                   })
+                .preferredColorScheme(.dark)
+                .buttonStyle(EmbossedButtonStyle())
+                
+                .padding(40)
+                .previewLayout(.sizeThatFits)
+        }
     }
 }
