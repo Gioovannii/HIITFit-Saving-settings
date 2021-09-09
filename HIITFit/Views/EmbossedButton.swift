@@ -49,13 +49,18 @@ struct EmbossedButtonStyle: ButtonStyle {
             .background(
                 Capsule()
                     .stroke(Color("background"), lineWidth: 2)
-                
+                    
                     .foregroundColor(Color("background"))
                     .shadow(color: shadow, radius: 1, x: 2, y: 2)
                     .shadow(color: highlight, radius: 1, x: -2, y: -2)
                     .offset(x: -1, y: -1)
             )
     }
+    
+    func shape() -> some View {
+        Capsule()
+    }
+    
 }
 
 struct EmbossedButton_Previews: PreviewProvider {
