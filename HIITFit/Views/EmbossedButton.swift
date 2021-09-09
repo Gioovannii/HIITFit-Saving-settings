@@ -38,6 +38,7 @@ enum EmbossedButtonShape {
 }
 
 struct EmbossedButtonStyle: ButtonStyle {
+    var buttonshape = EmbossedButtonShape.capsule
     
     func makeBody(configuration: Configuration) -> some View {
         let shadow = Color("drop-shadow")
@@ -47,17 +48,28 @@ struct EmbossedButtonStyle: ButtonStyle {
         return configuration.label
             .padding(10)
             .background(
-                shape()
-                    .foregroundColor(Color("background"))
-                    .shadow(color: shadow, radius: 1, x: 2, y: 2)
-                    .shadow(color: highlight, radius: 1, x: -2, y: -2)
-                    .offset(x: -1, y: -1)
-            )
+                GeometryReader { geometry in
+                    shape(size: geometry.size)
+                        .foregroundColor(Color("background"))
+                        .shadow(color: shadow, radius: 1, x: 2, y: 2)
+                        .shadow(color: highlight, radius: 1, x: -2, y: -2)
+                        .offset(x: -1, y: -1)
+                })
     }
     
-    func shape() -> some View {
-        Capsule()
-            .stroke(Color("background"), lineWidth: 2)
+    @ViewBuilder
+    func shape(size: CGSize) -> some View {
+        switch buttonshape {
+        case .round:
+            Circle()
+                .stroke(Color("background"), lineWidth: 2)
+                .frame(width: max(size.width, size.height),
+                       height: max(size.width, size.height))
+        case .capsule:
+            Capsule()
+                .stroke(Color("background"), lineWidth: 2)
+        }
+        
     }
     
 }
@@ -70,7 +82,7 @@ struct EmbossedButton_Previews: PreviewProvider {
                     Text("History")
                         .fontWeight(.bold)
                    })
-                .buttonStyle(EmbossedButtonStyle())
+                .buttonStyle(EmbossedButtonStyle(buttonshape: .round))
                 
                 .padding(40)
                 .previewLayout(.sizeThatFits)
