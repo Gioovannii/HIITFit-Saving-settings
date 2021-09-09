@@ -47,9 +47,7 @@ struct EmbossedButtonStyle: ButtonStyle {
         return configuration.label
             .padding(10)
             .background(
-                Capsule()
-                    .stroke(Color("background"), lineWidth: 2)
-                    
+                shape()
                     .foregroundColor(Color("background"))
                     .shadow(color: shadow, radius: 1, x: 2, y: 2)
                     .shadow(color: highlight, radius: 1, x: -2, y: -2)
@@ -59,6 +57,7 @@ struct EmbossedButtonStyle: ButtonStyle {
     
     func shape() -> some View {
         Capsule()
+            .stroke(Color("background"), lineWidth: 2)
     }
     
 }
