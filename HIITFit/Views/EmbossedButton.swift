@@ -32,6 +32,11 @@
 
 import SwiftUI
 
+
+enum EmbossedButtonShape {
+    case round, capsule
+}
+
 struct EmbossedButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
