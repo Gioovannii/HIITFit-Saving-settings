@@ -52,6 +52,20 @@ struct ExerciseView: View {
   var lastExercise: Bool {
     index + 1 == Exercise.exercises.count
   }
+    
+    var historyButton: some View {
+        Button(
+            action: {
+                showHistory = true
+            }, label: {
+                Text("History")
+                    .fontWeight(.bold)
+                    .padding([.leading, .trailing], 5)
+            })
+            .padding(.bottom, 10)
+            
+            .buttonStyle(EmbossedButtonStyle())
+    }
 
   var body: some View {
     GeometryReader { geometry in
