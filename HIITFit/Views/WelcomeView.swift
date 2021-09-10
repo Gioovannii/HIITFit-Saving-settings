@@ -46,38 +46,43 @@ struct WelcomeView: View {
     var historyButton: some View {
         Button(
             action: {
-            showHistory = true
-        }, label: {
-            Text("History")
-                .fontWeight(.bold)
-                .padding([.leading, .trailing], 5)
-        })
-}
-
-  var body: some View {
-    ZStack {
-      VStack {
-        HeaderView(selectedTab: $selectedTab, titleText: "Welcome")
-        Spacer()
-        Button("History") {
-          showHistory.toggle()
-        }
-        .sheet(isPresented: $showHistory) {
-          HistoryView(showHistory: $showHistory)
-        }
-          .padding(.bottom)
-      }
-      VStack {
-        HStack(alignment: .bottom) {
-          VStack(alignment: .leading) {
-            Text("Get fit")
-              .font(.largeTitle)
-            Text("with high intensity interval training")
-              .font(.headline)
-          }
-          Image("step-up")
-            .resizedToFill(width: 240, height: 240)
-            .clipShape(Circle())
+                showHistory = true
+            }, label: {
+                Text("History")
+                    .fontWeight(.bold)
+                    .padding([.leading, .trailing], 5)
+            })
+            .padding(.bottom, 10)
+            
+            .buttonStyle(EmbossedButtonStyle())
+    }
+    
+    var body: some View {
+        ZStack {
+            VStack {
+                HeaderView(selectedTab: $selectedTab, titleText: "Welcome")
+                Spacer()
+                historyButton
+                    .sheet(isPresented: $showHistory) {
+                        HistoryView(showHistory: $showHistory)
+                    }
+            }
+            VStack {
+                HStack(alignment: .bottom) {
+                    VStack(alignment: .leading) {
+                        Text("Get fit")
+                            .font(.largeTitle)
+                        Text("with high intensity interval training")
+                            .font(.headline)
+                    }
+                    Image("step-up")
+                        .resizedToFill(width: 240, height: 240)
+                        .clipShape(Circle())
+                }
+                // swiftlint:disable:next multiple_closures_with_trailing_closure
+                getStartedButton
+                
+            }
         }
     }
 }
