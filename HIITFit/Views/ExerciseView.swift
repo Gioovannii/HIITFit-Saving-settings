@@ -109,9 +109,7 @@ struct ExerciseView: View {
         Spacer()
         RatingView(exerciseIndex: index)
           .padding()
-        Button("History") {
-          showHistory.toggle()
-        }
+        historyButton
         .sheet(isPresented: $showHistory) {
           HistoryView(showHistory: $showHistory)
         }
