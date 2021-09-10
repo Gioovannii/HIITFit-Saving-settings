@@ -44,8 +44,15 @@ struct WelcomeView: View {
     }
     
     var historyButton: some View {
-        
-    }
+        Button(
+            action: {
+            showHistory = true
+        }, label: {
+            Text("History")
+                .fontWeight(.bold)
+                .padding([.leading, .trailing], 5)
+        })
+}
 
   var body: some View {
     ZStack {
