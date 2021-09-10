@@ -42,6 +42,10 @@ struct WelcomeView: View {
         }
         .padding()
     }
+    
+    var historyButton: some View {
+        
+    }
 
   var body: some View {
     ZStack {
