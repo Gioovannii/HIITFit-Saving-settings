@@ -65,6 +65,8 @@ struct EmbossedButtonStyle: ButtonStyle {
                 .stroke(Color("background"), lineWidth: 2)
                 .frame(width: max(size.width, size.height),
                        height: max(size.width, size.height))
+                .offset(x: -1)
+                .offset(y: -max(size.width, size.height) / 2 + min(size.width, size.height) / 2)
         case .capsule:
             Capsule()
                 .stroke(Color("background"), lineWidth: 2)
