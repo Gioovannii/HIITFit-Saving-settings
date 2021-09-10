@@ -33,8 +33,8 @@
 import SwiftUI
 
 struct WelcomeView: View {
-  @State private var showHistory = false
-  @Binding var selectedTab: Int
+    @State private var showHistory = false
+    @Binding var selectedTab: Int
     
     var getStartedButton: some View {
         RaisedButton(buttonText: "Get Started") {
@@ -79,16 +79,11 @@ struct WelcomeView: View {
             .resizedToFill(width: 240, height: 240)
             .clipShape(Circle())
         }
-        // swiftlint:disable:next multiple_closures_with_trailing_closure
-        getStartedButton
-       
-      }
     }
-  }
 }
 
 struct WelcomeView_Previews: PreviewProvider {
-  static var previews: some View {
-    WelcomeView(selectedTab: .constant(9))
-  }
+    static var previews: some View {
+        WelcomeView(selectedTab: .constant(9))
+    }
 }
